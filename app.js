@@ -1,15 +1,17 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
-const bodyParser = require("body-parser");
 
 const app = express();
-const port = process.env.PORT || 4041;
+const port = 4000;
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json({ limit: "30mb" }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
-app.use('/', require('./routes/users'));
-
-app.use('/', require('./routes/accessCodes'));
+app.use("/", require("./routes/userRoutes"));
+app.post("/", (_, res) => {
+  res.send("My Express App!");
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
