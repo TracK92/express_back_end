@@ -13,6 +13,9 @@ app.post("/", (_, res) => {
   res.send("My Express App!");
 });
 
+app.use("/", require("./routes/searchUsersRoutes"));
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
