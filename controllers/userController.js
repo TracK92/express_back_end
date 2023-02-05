@@ -1,7 +1,9 @@
 const db = require("../firebase.js");
 const { uuid } = require("uuidv4");
 const { doc, setDoc, getDoc } = require("firebase/firestore");
-const client = require("../twilio.js");
+const accountSid = process.env.TWILIO_ACCOUNT_SID; 
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken); 
 
 /*
  @route: POST /createNewAccessCode
