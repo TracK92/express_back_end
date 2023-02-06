@@ -1,5 +1,5 @@
 const db = require("../firebase.js");
-const { uuid } = require("uuidv4");
+const { v4: uuidv4 } = require('uuid')
 const { doc, setDoc, getDoc } = require("firebase/firestore");
 const accountSid = process.env.TWILIO_ACCOUNT_SID; 
 const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -13,8 +13,8 @@ const client = require('twilio')(accountSid, authToken);
 const createNewAccessCode = async (req, res) => {
   const { phoneNumber } = req.body;
   if (phoneNumber) {
-    const id = uuid();
-    const accessCode = uuid().slice(0, 6);
+    const id = uuidv4();
+    const accessCode = uuidv4().slice(0, 6);
     // save user to database
     await setDoc(doc(db, "users", phoneNumber), {
       id,
