@@ -15,7 +15,7 @@ const authToken = process.env.GITHUB_TOKEN;
 // Parameters: q (search term), page (page number), per_page (results per page)
 // Return: an array of users with login name that contains the search term
 
-const searchUsers = async (req, res) => {
+const searchGithubUsers = async (req, res) => {
   const octokit = new Octokit({
     auth: authToken,
   });
@@ -34,23 +34,24 @@ const searchUsers = async (req, res) => {
   });
 };
 
-// const searchUsers = async (req, res) => {
-//   const octokit = new Octokit({
-//     auth: authToken,
-//   });
+const findGithubUserProfile = async (req, res) => {
+  const octokit = new Octokit({
+    auth: authToken,
+  });
 
-//   const response = await octokit.request('GET /search/users?q={owner}+followers:{followers}', {
-//     owner: 'TracK92',
-//     followers: '>4',
-//   });
+  const response = await octokit.request("GET https://api.github.com/user", {
+    id: req.query.id,
+  });
+  
+  res.status(200).json({
+    success: true,
+    data: response.data,
+  });
+};
 
 
-//   res.status(200).json({
-//     success: true,
-//     data: response.data,
-//   });
-// };
 
 module.exports = {
-  searchUsers,
+  searchGithubUsers,
+  findGithubUserProfile,
 };
