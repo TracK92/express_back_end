@@ -19,7 +19,6 @@ app.post("/", (_, res) => {
 
 app.use("/", require("./routes/searchUsersRoutes"));
 
-
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
