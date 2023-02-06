@@ -39,7 +39,7 @@ const findGithubUserProfile = async (req, res) => {
     auth: authToken,
   });
 
-  const response = await octokit.request("GET https://api.github.com/user", {
+  const response = await octokit.request("GET /user", {
     id: req.query.id,
   });
   
