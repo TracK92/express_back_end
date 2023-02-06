@@ -13,7 +13,11 @@ const searchUsers = async (req, res) => {
     auth: authToken,
   });
 
-  const response = await octokit.request('GET /search/users?q=tom+repos:%3E42+followers:%3E1000', {});
+  const response = await octokit.request('GET /search/users?q={owner}+followers:{followers}', {
+    owner: 'TracK92',
+    followers: '>4',
+  });
+
 
   res.status(200).json({
     success: true,
