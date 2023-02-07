@@ -112,13 +112,13 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```bash
-$ git clone https://github.com/TracK92/react_front_end.git
+$ git clone https://github.com/TracK92/express_back_end.git
 ```
 
-Clone the backend repository to your desired folder:
+Clone the frontend repository to your desired folder:
 
 ```bash
-$ git clone https://github.com/TracK92/express_back_end.git
+$ git clone https://github.com/TracK92/react_front_end.git
 ```
 
 
